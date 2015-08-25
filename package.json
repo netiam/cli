@@ -10,8 +10,6 @@
     "build": "./bin/build",
     "clean": "./bin/clean",
     "lint": "./bin/lint",
-    "prepublish": "semantic-release pre",
-    "postpublish": "semantic-release post",
     "start": "npm run watch",
     "test": "npm run test:unit",
     "test:unit": "mocha",
