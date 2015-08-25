@@ -1,0 +1,48 @@
+{
+  "name": "netiam-cli",
+  "version": "1.0.0",
+  "description": "netiam CLI tools",
+  "main": "index.js",
+  "scripts": {
+    "build": "./bin/build",
+    "clean": "./bin/clean",
+    "lint": "./bin/lint",
+    "prepublish": "semantic-release pre",
+    "postpublish": "semantic-release post",
+    "start": "npm run watch",
+    "test": "npm run test:unit",
+    "test:unit": "mocha",
+    "test:coverage": "istanbul cover _mocha --report lcovonly -- -R spec",
+    "watch": "./bin/watch"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "babel": "^5",
+    "codeclimate-test-reporter": "^0.1.0",
+    "eslint": "^1.0.0",
+    "istanbul": "^0.3.5",
+    "mocha": "^2.0.1",
+    "semantic-release": "^3.3.2",
+    "should": "^7.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/netiam/cli.git"
+  },
+  "keywords": [
+    "CLI",
+    "tools"
+  ],
+  "author": "Hannes Moser <hannes@impossiblearts.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/netiam/cli/issues"
+  },
+  "homepage": "https://github.com/netiam/cli",
+  "engines": {
+    "node": ">=v0.12",
+    "iojs": ">=v2",
+    "npm": ">=2.1.12"
+  }
+}
