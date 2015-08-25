@@ -5,6 +5,7 @@
   "bin": {
     "netiam": "./bin/netiam"
   },
+  "preferGlobal": true,
   "scripts": {
     "build": "./bin/build",
     "clean": "./bin/clean",
