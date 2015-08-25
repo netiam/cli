@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import chalk from 'chalk'
 import commands from './index'
+import pkg from '../../package.json'
 
 export default function(spec) {
   const {ui} = spec
@@ -8,7 +9,7 @@ export default function(spec) {
   function run() {
     return new Promise((resolve, reject) => {
       ui.writeLine('Available commands in netiam-cli')
-      ui.writeLine('Available commands in netiam-cli')
+      ui.writeLine('Version: ' + pkg.version)
       ui.writeLine('')
 
       _.forEach(commands, command => {
