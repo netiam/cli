@@ -6,7 +6,7 @@ cache:
 notifications:
   email: false
 node_js:
-  - iojs
+  - iojs-v2
 before_script:
   - npm prune
 after_success:
