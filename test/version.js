@@ -1,9 +1,9 @@
 import pkg from '../package.json'
 
-describe('version', () => {
+describe('module', () => {
 
-  it('should return module version', () => {
-    pkg.version.should.be.a.String()
+  it('should not have version property', () => {
+    pkg.should.not.have.property('version')
   })
 
 })
