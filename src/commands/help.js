@@ -8,17 +8,17 @@ export default function(spec) {
   function run() {
     return new Promise((resolve, reject) => {
       ui.writeLine('Available commands in netiam-cli')
+      ui.writeLine('Available commands in netiam-cli')
       ui.writeLine('')
 
       _.forEach(commands, command => {
         const cmd = command()
-
         ui.write('netiam ' + cmd.name)
         if (cmd.anonymousOptions.length > 0) {
           ui.write(' ' + chalk.yellow(cmd.anonymousOptions.join(' ')))
         }
         if (cmd.availableOptions.length > 0) {
-          ui.write(chalk.blue(' <options…>'))
+          ui.write(chalk.cyan(' <options…>'))
         }
         ui.writeLine('')
 
@@ -27,7 +27,7 @@ export default function(spec) {
 
         if (cmd.availableOptions.length > 0) {
           _.forEach(cmd.availableOptions, option => {
-            ui.writeLine('  ' + chalk.green('--' + option.name + ' (' + option.type.name + ') (Default: ' + option.default + ')'))
+            ui.writeLine('  ' + chalk.cyan('--' + option.name + ' (' + option.type.name + ') (Default: ' + option.default + ')'))
             ui.writeLine('    ' + chalk.gray('aliases: ' + option.aliases.join(', ')))
           })
         }

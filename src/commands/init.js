@@ -1,5 +1,3 @@
-import chalk from 'chalk'
-
 export default function init(spec) {
 
   function run() {

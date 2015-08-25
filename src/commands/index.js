@@ -1,9 +1,13 @@
 import create from './create'
-import help from './help'
+import destroy from './destroy'
+import generate from './generate'
 import init from './init'
+import version from './version'
 
 export default Object.freeze({
   create,
-  help,
-  init
+  destroy,
+  generate,
+  init,
+  version
 })

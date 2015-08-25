@@ -1,4 +1,5 @@
 import commands from '../commands'
+import help from '../commands/help'
 import uit from '../ui'
 
 export default function cli(spec) {
@@ -10,19 +11,19 @@ export default function cli(spec) {
     outputStream
   })
 
-  if (args.length === 0) {
-    args.push('help')
-  }
-
-  const cmd = args[0]
-
-  if (!commands.hasOwnProperty(cmd)) {
-    throw new Error('Invalid command')
-  }
-
   function run() {
     return new Promise((resolve, reject) => {
-      commands[cmd]({
+      let cmd
+
+      if (args.length === 0) {
+        cmd = help
+      } else if (commands.hasOwnProperty(args[0])) {
+        cmd = commands[args[0]]
+      } else {
+        return reject(new Error('Invalid command'))
+      }
+
+      cmd({
         ui,
         inputStream,
         outputStream

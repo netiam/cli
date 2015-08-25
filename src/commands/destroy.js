@@ -1,6 +1,4 @@
-import chalk from 'chalk'
-
-export default function create(spec) {
+export default function destroy(spec) {
 
   function run() {
     return new Promise((resolve, reject) => {
@@ -9,10 +7,10 @@ export default function create(spec) {
   }
 
   return Object.freeze({
-    name: 'new',
-    works: 'outsideProject',
-    description: 'Creates a new directory and runs ' + chalk.green('netiam init') + ' in it.',
-    aliases: ['g'],
+    name: 'destroy',
+    works: 'insideProject',
+    description: 'Destroys code generate by `generate` command.',
+    aliases: ['d'],
 
     availableOptions: [
       {
@@ -24,7 +22,7 @@ export default function create(spec) {
     ],
 
     anonymousOptions: [
-      '<app-name>'
+      '<blueprint>'
     ],
 
     run

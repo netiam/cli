@@ -1,6 +1,4 @@
-import chalk from 'chalk'
-
-export default function create(spec) {
+export default function version(spec) {
 
   function run() {
     return new Promise((resolve, reject) => {
@@ -9,10 +7,10 @@ export default function create(spec) {
   }
 
   return Object.freeze({
-    name: 'new',
-    works: 'outsideProject',
-    description: 'Creates a new directory and runs ' + chalk.green('netiam init') + ' in it.',
-    aliases: ['g'],
+    name: 'version',
+    works: 'everywhere',
+    description: 'Outputs netiam-cli version.',
+    aliases: ['v', 'version', '-v', '--version'],
 
     availableOptions: [
       {
@@ -23,9 +21,7 @@ export default function create(spec) {
       }
     ],
 
-    anonymousOptions: [
-      '<app-name>'
-    ],
+    anonymousOptions: [],
 
     run
   })
