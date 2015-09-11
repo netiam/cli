@@ -5,6 +5,8 @@
 
 > The netiam CLI tool
 
+![netiam-cli](docs/videos/netiam-cli.gif)
+
 ## Install
 
 ```bash
