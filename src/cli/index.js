@@ -1,5 +1,9 @@
 import cli from './cli'
 
 export default function(spec) {
-  return cli(spec).run()
+  try {
+    return cli(spec).run()
+  } catch (err) {
+    console.error(err)
+  }
 }

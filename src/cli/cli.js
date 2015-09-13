@@ -1,3 +1,4 @@
+import nopt from 'nopt'
 import commands from '../commands'
 import help from '../commands/help'
 import uit from '../ui'
@@ -23,12 +24,20 @@ export default function cli(spec) {
         return reject(new Error('Invalid command'))
       }
 
-      cmd({
+      const c = cmd({
         ui,
         inputStream,
         outputStream
       })
-        .run(args.slice(1))
+
+      const parsedOptions = nopt(
+        c.availableOptions,
+        {},
+        process.argv,
+        3)
+
+      c
+        .run(parsedOptions)
         .then(resolve)
         .catch(reject)
     })
