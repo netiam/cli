@@ -1,0 +1,13 @@
+# System
+.DS_Store
+
+# Node.js
+node_modules
+npm-debug.log
+
+# App
+.env
+test-reports.xml
+backup/
+coverage/
+dist/

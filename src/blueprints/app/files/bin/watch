@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# author: {{=it.author.name}} <{{=it.author.email}}>
+#
+
+babel --optional runtime -L -e 1 -w -d ./lib ./src

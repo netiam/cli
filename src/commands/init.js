@@ -2,12 +2,86 @@ import inquirer from 'inquirer'
 import crypto from 'crypto'
 import fs from 'fs'
 import mkdirp from 'mkdirp'
+import isGitRepo from 'is-git-repo'
+import gitConfig from 'git-scope-config'
 
 export default function init(spec) {
 
   function run() {
     return new Promise((resolve, reject) => {
       inquirer.prompt([
+        {
+          type: 'input',
+          name: 'authorName',
+          message: 'Your name',
+          default: function() {
+            var done = this.async()
+            gitConfig({scope: 'global'}).get('user.name', (err, name) => {
+              if (err) {
+                return done()
+              }
+              name = name.replace(/(\r\n|\n|\r)/gm, '')
+              done(name)
+            })
+          }
+        },
+        {
+          type: 'input',
+          name: 'authorEmail',
+          message: 'Your email',
+          default: function() {
+            const done = this.async()
+            gitConfig({scope: 'global'}).get('user.email', (err, email) => {
+              if (err) {
+                return done()
+              }
+              email = email.replace(/(\r\n|\n|\r)/gm, '')
+              done(email)
+            })
+          }
+        },
+        {
+          type: 'input',
+          name: 'projectName',
+          message: 'Name of the project',
+          default: 'awesome-api'
+        },
+        {
+          type: 'input',
+          name: 'projectDescription',
+          message: 'Description of your project',
+          default: 'A RESTful API'
+        },
+        {
+          type: 'prompt',
+          name: 'git',
+          message: 'Do you wanna use GIT?',
+          default: true
+        },
+        {
+          type: 'input',
+          name: 'gitURL',
+          message: 'Repository URL',
+          when: (answers) => {
+            return answers.git
+          },
+          default: function() {
+            const done = this.async()
+            isGitRepo(process.cwd(), isGit => {
+              if (!isGit) {
+                return done()
+              }
+
+              gitConfig({scope: 'local'}).get('remote.origin.url', (err, url) => {
+                if (err) {
+                  return done()
+                }
+                url = url.replace(/(\r\n|\n|\r)/gm, '')
+                done(url)
+              })
+            })
+          }
+        },
         {
           type: 'confirm',
           name: 'authentication',
@@ -178,7 +252,55 @@ export default function init(spec) {
           ]
         }
       ], answers => {
-        console.log(answers)
+        const config = {
+          author: {
+            name: answers.authorName,
+            email: answers.authorEmail
+          },
+          project: {
+            name: answers.projectName,
+            description: answers.projectDescription
+          },
+          secret: answers.secret,
+          server: {
+            port: answers.port
+          },
+          features: answers.features
+        }
+
+        if (answers.git) {
+          config.git = {
+            url: answers.gitURL
+          }
+        }
+
+        if (answers.authentication) {
+          config.auth = {}
+          if (answers.authenticationFacebook) {
+            config.auth.fb = {
+              clientId: answers.facebookClientId,
+              clientSecret: answers.facebookClientSecret
+            }
+          }
+        }
+
+        if (answers.persistence) {
+          config.db = {
+            type: answers.database
+          }
+
+          if (answers.database === 'PostgreSQL' || answers.database === 'MySQL') {
+            config.db.username = answers.databaseUsername
+            config.db.password = answers.databasePassword
+          }
+
+          if (answers.database === 'PostgreSQL' || answers.database === 'MySQL' || answers.database === 'MongoDB') {
+            config.db.host = answers.databaseHost
+            config.db.port = answers.databasePort
+          }
+        }
+
+        resolve()
       })
     })
   }

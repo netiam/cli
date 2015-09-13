@@ -1,0 +1,50 @@
+{
+  "name": "{{=it.project.name}}",
+  "private": true,
+  "version": "{{=it.project.version}}",
+  "description": "{{=it.project.description}}",
+  "main": "app/server.js",
+  "scripts": {
+    "build": "./bin/build",
+    "clean": "./bin/clean",
+    "lint": "./bin/lint",
+    "start": "npm run watch",
+    "test": "npm run test:unit",
+    "test:unit": "mocha",
+    "test:coverage": "istanbul cover _mocha --report lcovonly -- -R spec",
+    "watch": "./bin/watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "{{=it.git.url}}"
+  },
+  "author": "{{=it.author.name}}",
+  "license": "proprietary",
+  "devDependencies": {
+    "babel": "^5",
+    "babel-eslint": "^4",
+    "istanbul": "^0.3",
+    "eslint": "^1",
+    "mocha": "^2",
+    "nodemon": "^1",
+    "should": "^7",
+    "supertest": "^1"
+  },
+  "dependencies": {
+    "babel-runtime": "^5",
+    "bcrypt": "^0.8",
+    "body-parser": "^1",
+    "compression": "^1",
+    "cors": "^2",
+    "dotenv": "^1",
+    "express": "^4",
+    "lodash": "^3",
+    "netiam": "^6",
+    "netiam-errors": "^1",
+    "request": "^2",
+    "serve-favicon": "^2"
+  },
+  "engines": {
+    "node": "^4"
+  }
+}

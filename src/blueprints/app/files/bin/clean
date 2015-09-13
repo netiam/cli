@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# author: {{=it.author.name}} <{{=it.author.email}}>
+#
+
+rm -rf ./lib
