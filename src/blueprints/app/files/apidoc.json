@@ -5,14 +5,6 @@
   "title": "{{=it.project.name}}",
   "url": "{{=it.project.url}}",
   "sampleUrl": "{{=it.project.url}}",
-  "header": {
-    "title": "{{=it.project.header.title}}",
-    "filename": "{{=it.project.header.filename}}"
-  },
-  "footer": {
-    "title": "{{=it.project.footer.title}}",
-    "filename": "{{=it.project.footer.filename}}"
-  },
   "order": [
   ]
 }

@@ -1,6 +1,10 @@
+import _ from 'lodash'
 import inquirer from 'inquirer'
+import dot from 'dot'
+import glob from 'glob'
 import crypto from 'crypto'
 import fs from 'fs'
+import path from 'path'
 import mkdirp from 'mkdirp'
 import isGitRepo from 'is-git-repo'
 import gitConfig from 'git-scope-config'
@@ -173,6 +177,28 @@ export default function init(spec) {
         },
         {
           type: 'input',
+          name: 'databaseName',
+          message: 'Database name',
+          default: 'netiam',
+          when: answers => {
+            if (!answers.persistence) {
+              return false
+            }
+            if (answers.database === 'PostgreSQL') {
+              return true
+            }
+            if (answers.database === 'MySQL') {
+              return true
+            }
+            if (answers.database === 'MongoDB') {
+              return true
+            }
+
+            return false
+          }
+        },
+        {
+          type: 'input',
           name: 'databaseUsername',
           message: 'Database username',
           default: 'netiam',
@@ -297,10 +323,24 @@ export default function init(spec) {
           if (answers.database === 'PostgreSQL' || answers.database === 'MySQL' || answers.database === 'MongoDB') {
             config.db.host = answers.databaseHost
             config.db.port = answers.databasePort
+            config.db.name = answers.databaseName
           }
         }
 
-        resolve()
+        // render templates from blueprint
+        const blueprintDir = path.resolve(
+          __dirname,
+          '../../src/blueprints/app/files',
+          '**')
+        glob(blueprintDir, {nodir: true}, (err, files) => {
+          _.forEach(files, file => {
+            const tpl = dot.template(fs.readFileSync(file))
+            const compiled = tpl(config)
+            console.log(file)
+            console.log(compiled)
+          })
+          resolve()
+        })
       })
     })
   }
