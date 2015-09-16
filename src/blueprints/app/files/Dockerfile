@@ -14,11 +14,21 @@ RUN apk del make gcc g++ python && rm -rf /tmp/* /var/cache/apk/* /root/.npm /ro
 ENV NODE_ENV {{=it.server.env}}
 ENV WORKERS {{=it.server.workers}}
 ENV PORT {{=it.server.port}}
+{{? it.db.name }}
 ENV DB_NAME {{=it.db.name}}
+{{?}}
+{{? it.db.host }}
 ENV DB_HOST {{=it.db.host}}
+{{?}}
+{{? it.db.port }}
 ENV DB_PORT {{=it.db.port}}
+{{?}}
+{{? it.db.username }}
 ENV DB_USER {{=it.db.username}}
+{{?}}
+{{? it.db.username }}
 ENV DB_PASS {{=it.db.password}}
+{{?}}
 
 EXPOSE {{=it.server.port}}
 

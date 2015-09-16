@@ -10,13 +10,16 @@ export default Object.freeze({
 
   project: {
     name: 'Awesome project',
-    description: 'Awesome project description'
+    description: 'Awesome project description',
+    version: '1.0.0-semantically-released'
   },
 
   secret: undefined,
 
   server: {
     port: 3000,
+    workers: 2,
+    env: 'production',
     features: []
   },
 
@@ -35,7 +38,7 @@ export default Object.freeze({
     type: 'Memory',
     username: undefined,
     password: undefined,
-    host: 'localhost',
+    host: undefined,
     port: undefined,
     name: undefined
   }

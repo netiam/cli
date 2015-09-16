@@ -1,11 +1,15 @@
 import _ from 'lodash'
+import async from 'async'
 import inquirer from 'inquirer'
+import mkdirp from 'mkdirp'
 import dot from 'dot'
 import glob from 'glob'
 import fs from 'fs'
 import path from 'path'
 import initPrompt from './init/prompt'
 import initDefaults from './init/defaults'
+
+dot.templateSettings.strip = false
 
 export default function init(spec) {
 
@@ -56,18 +60,32 @@ export default function init(spec) {
           }
 
           // render templates from blueprint
-          const blueprintDir = path.resolve(
-            __dirname,
-            '../../src/blueprints/app/files',
-            '**')
-          glob(blueprintDir, {nodir: true}, (err, files) => {
-            _.forEach(files, file => {
+          const basedir = path.resolve(__dirname, '../../src/blueprints/app/files')
+          const blueprintDir = path.join(basedir, '**')
+          const opts = {
+            dot: true,
+            nodir: true
+          }
+          glob(blueprintDir, opts, (err, files) => {
+            async.each(files, (file, done) => {
               const tpl = dot.template(fs.readFileSync(file))
               const compiled = tpl(config)
-              console.log(file)
-              console.log(compiled)
+              const filepath = path.relative(basedir, file)
+
+              mkdirp(path.dirname(path.resolve(process.cwd(), filepath)), err => {
+                if (err) {
+                  return done(err)
+                }
+                fs.writeFileSync(filepath, compiled)
+                done()
+              })
+            }, err => {
+              if (err) {
+                return reject(err)
+              }
+
+              resolve()
             })
-            resolve()
           })
         })
 
