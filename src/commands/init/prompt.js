@@ -1,3 +1,5 @@
+import crypto from 'crypto'
+import isGitRepo from 'is-git-repo'
 import gitConfig from 'git-scope-config'
 
 export default [
