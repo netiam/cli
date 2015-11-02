@@ -33,7 +33,7 @@
     "nopt": "3.0.4",
     "pleasant-progress": "1.1.0",
     "readline2": "1.0.1",
-    "recast": "0.10.35",
+    "recast": "0.10.36",
     "resolve": "1.1.6",
     "rimraf": "2.4.3",
     "through": "2.3.8"
