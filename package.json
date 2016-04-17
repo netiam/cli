@@ -26,7 +26,7 @@
     "exit": "0.1.2",
     "git-scope-config": "0.0.0",
     "glob": "5.0.15",
-    "inquirer": "1.0.0",
+    "inquirer": "1.0.2",
     "is-git-repo": "0.1.2",
     "lodash": "4.8.2",
     "mkdirp": "0.5.1",
