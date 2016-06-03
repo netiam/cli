@@ -20,7 +20,7 @@
   "dependencies": {
     "async": "1.5.0",
     "babel-runtime": "6.9.2",
-    "chalk": "1.1.1",
+    "chalk": "1.1.2",
     "debug": "2.2.0",
     "dot": "1.0.3",
     "exit": "0.1.2",
