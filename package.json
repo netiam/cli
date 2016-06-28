@@ -39,7 +39,7 @@
     "through": "2.3.8"
   },
   "devDependencies": {
-    "babel": "6.0.15",
+    "babel": "6.5.2",
     "codeclimate-test-reporter": "0.3.3",
     "eslint": "2.13.1",
     "istanbul": "0.4.4",
