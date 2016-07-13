@@ -3,13 +3,13 @@
 
 process.title = 'netiam'
 
-var resolve = require('resolve')
-var exit = require('exit')
+const resolve = require('resolve')
+const exit = require('exit')
 
 resolve('netiam-cli', {
   basedir: process.cwd()
 }, function(err, projectLocalCli) {
-  var cli
+  let cli
 
   if (err) {
     cli = require('../lib/cli')
