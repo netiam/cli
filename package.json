@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "babel": "6.5.2",
-    "codeclimate-test-reporter": "0.3.3",
+    "codeclimate-test-reporter": "0.4.0",
     "eslint": "3.7.0",
     "istanbul": "0.4.5",
     "mocha": "3.0.1",
