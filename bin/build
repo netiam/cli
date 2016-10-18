@@ -5,4 +5,4 @@
 # compile to JavaScript
 npm run clean &&
 npm run lint &&
-babel --optional runtime -L -e 1 -d ./lib ./src
+babel -d ./lib ./src
