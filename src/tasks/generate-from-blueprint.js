@@ -7,6 +7,5 @@ export class GenerateFromBlueprint extends Task {
   }
 
   run(options) {
-
   }
 }
