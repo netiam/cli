@@ -1,7 +1,7 @@
+import _ from 'lodash'
 import nopt from 'nopt'
 import commands from '../commands'
 import help from '../commands/help'
-import _ from 'lodash'
 import uit from '../ui'
 
 export default function cli(spec) {
@@ -27,32 +27,27 @@ export default function cli(spec) {
   }
 
   function run() {
-    return new Promise((resolve, reject) => {
-      let cmd
+    let cmd
 
-      if (findCommand(args[0])) {
-        cmd = findCommand(args[0])
-      } else {
-        cmd = help
-      }
+    if (findCommand(args[0])) {
+      cmd = findCommand(args[0])
+    } else {
+      cmd = help
+    }
 
-      const c = cmd({
-        ui,
-        inputStream,
-        outputStream
-      })
-
-      const parsedOptions = nopt(
-        c.availableOptions,
-        {},
-        process.argv,
-        3)
-
-      c
-        .run(parsedOptions)
-        .then(resolve)
-        .catch(reject)
+    const c = cmd({
+      ui,
+      inputStream,
+      outputStream
     })
+
+    const parsedOptions = nopt(
+      c.availableOptions,
+      {},
+      process.argv,
+      3)
+
+    return c.run(parsedOptions)
   }
 
   return Object.freeze({
