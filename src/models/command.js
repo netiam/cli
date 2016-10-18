@@ -1,5 +1,4 @@
 import _ from 'lodash'
-import path from 'path'
 
 const OPT_INSIDE_PROJECT = 'insideProject'
 const OPT_OUTSIDE_PROJECT = 'outsideProject'
