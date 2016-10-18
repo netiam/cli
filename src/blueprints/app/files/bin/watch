@@ -2,4 +2,4 @@
 # author: {{=it.author.name}} <{{=it.author.email}}>
 #
 
-babel -w -d ./dist ./src
+babel -w -d ./dist ./app

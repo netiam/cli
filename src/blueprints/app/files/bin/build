@@ -4,6 +4,6 @@
 
 npm run clean
 npm run lint
-babel --optional runtime -L -e 1 -d ./dist ./src
+babel -d ./dist ./app
 npm run copy
 npm run docs
