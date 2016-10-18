@@ -3,7 +3,7 @@
   "description": "netiam CLI tools",
   "main": "lib/cli/index.js",
   "bin": {
-    "netiam": "./bin/netiam"
+    "netiam": "./bin/netiam.js"
   },
   "preferGlobal": true,
   "scripts": {
