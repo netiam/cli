@@ -5,5 +5,6 @@ export default function(spec) {
     return cli(spec).run()
   } catch (err) {
     console.error(err)
+    console.error(err.stack)
   }
 }
