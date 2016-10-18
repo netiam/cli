@@ -4,6 +4,7 @@ export default function version({ui}) {
 
   function run() {
     ui.writeLine(`You are running ${pkg.version || '1.0.0-semantically-released'}`)
+    return Promise.resolve()
   }
 
   return Object.freeze({

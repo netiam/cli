@@ -11,16 +11,20 @@ try {
   const projectLocalCli = resolve.sync('netiam-cli', {basedir: process.cwd()})
   cli = require(projectLocalCli)
 } catch (err) {
-  cli = require('../src/cli')
+  cli = require('../src/cli/index')
 }
 
-cli({
+const exec = cli({
   cliArgs: process.argv.slice(2),
   inputStream: process.stdin,
   outputStream: process.stdout
 })
+
+exec
   .then(result => {
     const exitCode = typeof result === 'object' ? result.exitCode : result
     exit(exitCode)
   })
-  .catch(err => console.error(err))
+  .catch(err => {
+    console.error(err)
+  })

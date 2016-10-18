@@ -32,13 +32,15 @@ export default function({ui}) {
 
       if (cmd.availableOptions.length > 0) {
         _.forEach(cmd.availableOptions, option => {
-          ui.writeLine('  ' + chalk.cyan('--' + option.name + ' (' + option.type.name + ') (Default: ' + option.default + ')'))
-          ui.writeLine('    ' + chalk.gray('aliases: ' + option.aliases.join(', ')))
+          ui.writeLine(`  ${chalk.cyan(`--${option.name} (${option.type.name}) (Default: ${option.default})`)}`)
+          ui.writeLine(`    ${chalk.gray(`aliases: ${option.aliases.join(', ')}`)}`)
         })
       }
 
       ui.writeLine('')
     })
+
+    return Promise.resolve()
   }
 
   return Object.freeze({

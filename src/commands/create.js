@@ -7,35 +7,32 @@ import init from '../commands/init'
 export default function create({ui}) {
 
   function run(args) {
-    return new Promise((resolve, reject) => {
-      const name = args.argv.cooked.shift()
+    const name = args.argv.cooked.shift()
 
-      if (!name) {
-        return reject(new Error(`Invalid project name "${name}"`))
-      }
+    if (!name) {
+      return reject(
+        new Error(`Invalid project name "${name}"`))
+    }
 
-      const cwd = process.cwd()
-      const projectDir = path.resolve(cwd, name)
-      let stats
-      try {
-        stats = fs.statSync(projectDir)
-      } catch (err) {
-        /* noop */
-      }
+    const cwd = process.cwd()
+    const projectDir = path.resolve(cwd, name)
+    let stats
+    try {
+      stats = fs.statSync(projectDir)
+    } catch (err) {
+      /* noop */
+    }
 
-      if (stats && stats.isDirectory()) {
-        return reject(new Error(`Directory exists "${projectDir}"`))
-      }
+    if (stats && stats.isDirectory()) {
+      return reject(
+        new Error(`Project directory exists "${projectDir}". Use 'init' instead of 'create'.`))
+    }
 
-      mkdirp.sync(projectDir)
-      process.chdir(projectDir)
+    mkdirp.sync(projectDir)
+    process.chdir(projectDir)
 
-      // call init
-      init(spec)
-        .run(args)
-        .then(resolve)
-        .catch(reject)
-    })
+    // call init
+    return init().run(args)
   }
 
   return Object.freeze({

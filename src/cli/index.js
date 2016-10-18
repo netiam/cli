@@ -1,3 +1,5 @@
 import cli from './cli'
 
-module.exports = spec => cli(spec).run()
+module.exports = function(spec) {
+  return cli(spec).run()
+}

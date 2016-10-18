@@ -14,7 +14,7 @@ export default [
           return done()
         }
         name = name.replace(/(\r\n|\n|\r)/gm, '')
-        done(name)
+        done(null, name)
       })
     }
   },
@@ -29,7 +29,7 @@ export default [
           return done()
         }
         email = email.replace(/(\r\n|\n|\r)/gm, '')
-        done(email)
+        done(null, email)
       })
     }
   },
@@ -62,7 +62,7 @@ export default [
       const done = this.async()
       isGitRepo(process.cwd(), isGit => {
         if (!isGit) {
-          return done()
+          return done(null)
         }
 
         gitConfig({scope: 'local'}).get('remote.origin.url', (err, url) => {
@@ -70,7 +70,7 @@ export default [
             return done()
           }
           url = url.replace(/(\r\n|\n|\r)/gm, '')
-          done(url)
+          done(null, url)
         })
       })
     }
@@ -227,7 +227,7 @@ export default [
     message: 'Enable middleware and features',
     choices: [
       {
-        name: 'Compression (e.g. GZIP)',
+        name: 'Compression (e.g. gzip)',
         value: 'compression'
       },
       {
