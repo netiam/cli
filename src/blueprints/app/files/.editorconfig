@@ -22,6 +22,11 @@ indent_style = space
 indent_size = 2
 quote_type = single
 
+[{.babelrc}]
+indent_style = space
+indent_size = 2
+quote_type = single
+
 [package.json]
 indent_style = space
 indent_size = 2

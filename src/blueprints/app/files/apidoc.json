@@ -5,6 +5,13 @@
   "title": "{{=it.project.name}}",
   "url": "{{=it.project.url}}",
   "sampleUrl": "{{=it.project.url}}",
-  "order": [
-  ]
+  "order": [],
+  "header": {
+    "title": "Introduction",
+    "filename": "docs/apidoc-src/header.md"
+  },
+  "footer": {
+    "title": "About",
+    "filename": "docs/apidoc-src/footer.md"
+  }
 }

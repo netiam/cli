@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# author: {{=it.author.name}} <{{=it.author.email}}>
+#
+
+cp -rf ./config ./dist
+cp -rf ./db ./dist
+cp migrate ./dist
+cp ./src/acl/*.acl.json ./dist/acl

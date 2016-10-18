@@ -1,13 +1,28 @@
 # System
 .DS_Store
 
+# IDE
+.idea/
+
 # Node.js
-node_modules
+node_modules/
 npm-debug.log
 
-# App
-.env
-test-reports.xml
-backup/
+# Test
 coverage/
+test-reports.xml
+
+# Build
 dist/
+
+# db
+db.sqlite
+
+# files
+files/*
+!files/.gitkeep
+!files/tmp/.gitkeep
+
+# docs
+docs/apidoc-src/header.md
+docs/apidoc-src/models.md

@@ -1,0 +1,12 @@
+.babelrc
+.codeclimate.yml
+.editorconfig
+.eslintignore
+.eslintrc
+.gitattributes
+.gitignore
+.nvmrc
+apidoc.json
+README.md
+
+node_modules/

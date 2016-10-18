@@ -2,6 +2,8 @@
 # author: {{=it.author.name}} <{{=it.author.email}}>
 #
 
-npm run clean &&
-npm run lint &&
-babel --optional runtime -L -e 1 -d ./lib ./dist
+npm run clean
+npm run lint
+babel --optional runtime -L -e 1 -d ./dist ./src
+npm run copy
+npm run docs
