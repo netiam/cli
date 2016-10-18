@@ -11,7 +11,7 @@ try {
   const projectLocalCli = resolve.sync('netiam-cli', {basedir: process.cwd()})
   cli = require(projectLocalCli)
 } catch (err) {
-  cli = require('../src/lib/index')
+  cli = require('../lib/index')
 }
 
 const exec = cli({
