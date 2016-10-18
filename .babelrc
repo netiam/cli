@@ -2,8 +2,5 @@
   "plugins": [],
   "presets": [
     "es2015-node6"
-  ],
-  "ignore": [
-    "/src/blueprints/**"
   ]
 }

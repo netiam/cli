@@ -5,4 +5,5 @@
 # compile to JavaScript
 npm run clean &&
 npm run lint &&
-babel -d ./lib ./src
+babel -d ./lib ./src --ignore ./src/blueprints/app/files &&
+cp -R ./src/blueprints/app/files ./lib/blueprints/app/

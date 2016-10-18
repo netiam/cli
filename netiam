@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-babel-node ./bin/netiam.js "$@"
+rm -rf contacts-api
+npm run build
+./bin/netiam.js "$@"

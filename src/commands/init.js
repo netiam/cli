@@ -1,4 +1,3 @@
-import async from 'async'
 import inquirer from 'inquirer'
 import mkdirp from 'mkdirp'
 import dot from 'dot'
@@ -60,40 +59,28 @@ export default function init({} = {}) {
         }
 
         // render templates from blueprint
-        const basedir = path.resolve(BLUEPRINTS_DIR, 'app/files')
-        const blueprintDir = path.join(basedir, '**')
+        const basedir = path.resolve(BLUEPRINTS_DIR, 'app/files/')
         const opts = {
+          absolute: true,
+          cwd: basedir,
           dot: true,
           nodir: true
         }
 
-        return new Promise((resolve, reject) => {
-          glob(blueprintDir, opts, (err, files) => {
-            if (err) {
-              return reject(err)
-            }
+        try {
+          const files = glob.sync('**', opts)
+          files.forEach(file => {
+            const tpl = dot.template(fs.readFileSync(file))
+            const compiled = tpl(config)
+            const filepath = path.relative(basedir, file)
+            const target = path.resolve(process.cwd(), filepath)
 
-            async.each(files, (file, done) => {
-              const tpl = dot.template(fs.readFileSync(file))
-              const compiled = tpl(config)
-              const filepath = path.relative(basedir, file)
-              const targetdir = path.resolve(process.cwd(), filepath)
-
-              mkdirp(path.dirname(targetdir), err => {
-                if (err) {
-                  return done(err)
-                }
-                fs.writeFileSync(filepath, compiled)
-                done()
-              })
-            }, err => {
-              if (err) {
-                return reject(err)
-              }
-              resolve()
-            })
+            mkdirp.sync(path.dirname(target))
+            fs.writeFileSync(target, compiled)
           })
-        })
+        } catch (err) {
+          return Promise.reject(err)
+        }
       })
   }
 
