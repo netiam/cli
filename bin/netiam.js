@@ -8,7 +8,7 @@ const exit = require('exit')
 
 resolve('netiam-cli', {
   basedir: process.cwd()
-}, function(err, projectLocalCli) {
+}, (err, projectLocalCli) => {
   let cli
 
   if (err) {
@@ -22,9 +22,13 @@ resolve('netiam-cli', {
     inputStream: process.stdin,
     outputStream: process.stdout
   })
-    .then(function(result) {
+    .then(result => {
       var exitCode = typeof result === 'object' ? result.exitCode : result
       exit(exitCode)
+    })
+    .catch(err => {
+      console.error(err)
+      console.error(err.stack)
     })
 
 })
