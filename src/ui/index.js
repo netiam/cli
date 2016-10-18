@@ -1,4 +1,3 @@
-import inquirer from 'inquirer'
 import PleasantProgress from 'pleasant-progress'
 import readline from 'readline2'
 import through from 'through'

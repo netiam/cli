@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import async from 'async'
 import inquirer from 'inquirer'
 import mkdirp from 'mkdirp'
@@ -109,7 +108,7 @@ export default function init(spec) {
     ],
 
     anonymousOptions: [
-      '<glob-pattern>'
+      '<path>'
     ],
 
     run

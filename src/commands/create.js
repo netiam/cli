@@ -4,8 +4,7 @@ import path from 'path'
 import mkdirp from 'mkdirp'
 import init from '../commands/init'
 
-export default function create(spec) {
-  const {ui} = spec
+export default function create({ui}) {
 
   function run(args) {
     return new Promise((resolve, reject) => {

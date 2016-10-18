@@ -3,27 +3,32 @@ import chalk from 'chalk'
 import commands from './index'
 import pkg from '../../package.json'
 
-export default function(spec) {
-  const {ui} = spec
+export default function({ui}) {
 
   function run() {
-    ui.writeLine('Available commands in netiam-cli')
-    ui.writeLine('Version: ' + (pkg.version || '1.0.0-semantically-released'))
+    ui.writeLine('Usage: netiam <command (Default: help)>')
+    ui.writeLine('version: ' + (pkg.version || '1.0.0-semantically-released'))
+    ui.writeLine('')
+    ui.writeLine('Available commands in netiam-cli:')
     ui.writeLine('')
 
     _.forEach(commands, command => {
-      const cmd = command()
+      const cmd = command({ui})
+
       ui.write('netiam ' + cmd.name)
       if (cmd.anonymousOptions.length > 0) {
         ui.write(' ' + chalk.yellow(cmd.anonymousOptions.join(' ')))
       }
+
       if (cmd.availableOptions.length > 0) {
         ui.write(chalk.cyan(' <options…>'))
       }
       ui.writeLine('')
 
       ui.writeLine('  ' + cmd.description)
-      ui.writeLine('  ' + chalk.gray('aliases: ' + cmd.aliases.join(', ')))
+      if (cmd.aliases.length) {
+        ui.writeLine('  ' + chalk.gray('aliases: ' + cmd.aliases.join(', ')))
+      }
 
       if (cmd.availableOptions.length > 0) {
         _.forEach(cmd.availableOptions, option => {
@@ -31,6 +36,8 @@ export default function(spec) {
           ui.writeLine('    ' + chalk.gray('aliases: ' + option.aliases.join(', ')))
         })
       }
+
+      ui.writeLine('')
     })
   }
 
@@ -40,14 +47,7 @@ export default function(spec) {
     description: 'Prints this help',
     aliases: ['h'],
 
-    availableOptions: [
-      {
-        name: 'verbose',
-        type: Boolean,
-        default: false,
-        aliases: ['v']
-      }
-    ],
+    availableOptions: [],
 
     anonymousOptions: [],
 

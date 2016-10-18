@@ -1,6 +1,7 @@
 import nopt from 'nopt'
 import commands from '../commands'
 import help from '../commands/help'
+import _ from 'lodash'
 import uit from '../ui'
 
 export default function cli(spec) {
@@ -12,16 +13,27 @@ export default function cli(spec) {
     outputStream
   })
 
+  function findCommand(name) {
+    // direct match
+    if (commands.hasOwnProperty(name)) {
+      return commands[name]
+    }
+
+    // alias search
+    return _.find(commands, command => {
+      const cmd = command({ui})
+      return cmd.aliases.includes(name)
+    })
+  }
+
   function run() {
     return new Promise((resolve, reject) => {
       let cmd
 
-      if (args.length === 0) {
-        cmd = help
-      } else if (commands.hasOwnProperty(args[0])) {
-        cmd = commands[args[0]]
+      if (findCommand(args[0])) {
+        cmd = findCommand(args[0])
       } else {
-        return reject(new Error('Invalid command'))
+        cmd = help
       }
 
       const c = cmd({

@@ -1,25 +1,18 @@
-export default function version(spec) {
+import pkg from '../../package.json'
+
+export default function version({ui}) {
 
   function run() {
-    return new Promise((resolve, reject) => {
-      resolve()
-    })
+    ui.writeLine(`You are running ${pkg.version || '1.0.0-semantically-released'}`)
   }
 
   return Object.freeze({
     name: 'version',
     works: 'everywhere',
-    description: 'Outputs netiam-cli version.',
+    description: 'Prints netiam-cli version.',
     aliases: ['v', 'version', '-v', '--version'],
 
-    availableOptions: [
-      {
-        name: 'verbose',
-        type: Boolean,
-        default: false,
-        aliases: ['v']
-      }
-    ],
+    availableOptions: [],
 
     anonymousOptions: [],
 
