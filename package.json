@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",
-    "babel-preset-es2015-node6": "^0.3.0",
+    "babel-preset-es2015-node6": "^0.4.0",
     "codeclimate-test-reporter": "^0.4.0",
     "eslint": "^3.8.1",
     "istanbul": "0.4.5",
