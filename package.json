@@ -45,7 +45,7 @@
     "istanbul": "0.4.5",
     "mocha": "^3.2.0",
     "semantic-release": "6.3.2",
-    "should": "11.1.1"
+    "should": "11.1.2"
   },
   "repository": {
     "type": "git",
