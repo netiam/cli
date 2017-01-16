@@ -38,7 +38,7 @@ export default function create({ui}) {
   return Object.freeze({
     name: 'create',
     works: 'outsideProject',
-    description: 'Creates a new directory and runs ' + chalk.green('netiam init') + ' in it.',
+    description: 'Creates a new directory and runs ' + chalk.green('netiam init') + ' within.',
     aliases: ['c'],
 
     availableOptions: [

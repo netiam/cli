@@ -9,7 +9,7 @@ export default function destroy(spec) {
   return Object.freeze({
     name: 'destroy',
     works: 'insideProject',
-    description: 'Destroys code generate by `generate` command.',
+    description: 'Destroys files created by `generate` command.',
     aliases: ['d'],
 
     availableOptions: [
