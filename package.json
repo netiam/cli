@@ -24,7 +24,7 @@
     "debug": "^2.2.0",
     "dot": "^1.0.3",
     "exit": "^0.1.2",
-    "git-scope-config": "^0.1.0",
+    "git-scope-config": "^1.0.0",
     "glob": "^7.1.1",
     "inquirer": "^3.0.2",
     "is-git-repo": "^0.1.2",
@@ -41,11 +41,11 @@
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-preset-es2015-node6": "^0.4.0",
-    "codeclimate-test-reporter": "^0.4.0",
+    "codeclimate-test-reporter": "^0.5.0",
     "eslint": "^3.8.1",
     "istanbul": "0.4.5",
     "mocha": "^3.3.0",
-    "semantic-release": "6.3.2",
+    "semantic-release": "6.3.6",
     "should": "11.2.1"
   },
   "repository": {
