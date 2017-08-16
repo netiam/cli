@@ -45,7 +45,7 @@
     "eslint": "^3.8.1",
     "istanbul": "0.4.5",
     "mocha": "^3.3.0",
-    "semantic-release": "6.3.6",
+    "semantic-release": "7.0.1",
     "should": "11.2.1"
   },
   "repository": {
