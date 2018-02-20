@@ -33,7 +33,7 @@
     "nopt": "^4.0.0",
     "pleasant-progress": "^1.1.0",
     "readline2": "^1.0.1",
-    "recast": "^0.13.0",
+    "recast": "^0.14.0",
     "resolve": "^1.1.7",
     "rimraf": "^2.5.4",
     "through": "^2.3.8"
